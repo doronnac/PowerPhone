@@ -1,11 +1,9 @@
-
 import 'package:flutter/material.dart';
 
 class ContactSingleInfoRow extends StatelessWidget {
-  const ContactSingleInfoRow({
-    required this.singleInfo,
-    required this.singleIcon
-  }) : super();
+  const ContactSingleInfoRow(
+      {required this.singleInfo, required this.singleIcon})
+      : super();
 
   final String singleInfo;
   final IconData singleIcon;

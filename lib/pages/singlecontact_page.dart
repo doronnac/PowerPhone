@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class SingleContactPage extends StatelessWidget {
   final Contact contact;
 
-  SingleContactPage({required this.contact}) : super();
+  const SingleContactPage({Key? key, required this.contact}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class SingleContactPage extends StatelessWidget {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -24,7 +24,7 @@ class SingleContactPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(children: [
           Center(child: Avatar(name: '${contact.name} ${contact.surname}')),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           Column(children: [
@@ -33,7 +33,7 @@ class SingleContactPage extends StatelessWidget {
               style: Theme.of(context).textTheme.headline1,
             ),
           ]),
-          SizedBox(
+          const SizedBox(
             height: 28,
           ),
           ContactSingleInfoRow(

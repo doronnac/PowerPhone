@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.green,
         accentColor: Colors.greenAccent,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           headline1: TextStyle(fontSize: 24, color: Colors.white),
           headline6: TextStyle(fontSize: 16, color: Colors.green),
         ),
