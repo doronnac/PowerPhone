@@ -1,12 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:better_phone/models/contact.dart';
-import 'package:better_phone/pages/singlecontact_page.dart';
 import 'package:avatars/avatars.dart';
+import 'package:better_phone/pages/singlecontact_page.dart';
+import 'package:better_phone/utils/parse_contact.dart';
+import 'package:contacts_service/contacts_service.dart';
+import 'package:flutter/material.dart';
 
 class ContactRow extends StatelessWidget {
   final Contact contact;
 
-  ContactRow({required this.contact}) : super();
+  const ContactRow({Key? key, required this.contact}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class ContactRow extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => SingleContactPage(
-              contact: this.contact,
+              contact: contact,
             ),
           ),
         );
@@ -24,20 +25,20 @@ class ContactRow extends StatelessWidget {
       leading: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Avatar(
-            name: '${contact.name} ${contact.surname}',
+            name: parseName(contact.displayName),
             shape: AvatarShape.circle(20)),
       ),
-      contentPadding: EdgeInsets.only(top: 6, left: 16, bottom: 6),
+      contentPadding: const EdgeInsets.only(top: 6, left: 16, bottom: 6),
       title: Text(
-        "${contact.name} ${contact.surname}",
-        style: TextStyle(color: Colors.white),
+        parseName(contact.displayName),
+        style: const TextStyle(color: Colors.white),
       ),
       subtitle: Text(
-        "${contact.email}",
-        style: TextStyle(color: Colors.white70),
+        parseEmail(contact.emails),
+        style: const TextStyle(color: Colors.white70),
       ),
-      trailing: Padding(
-        padding: const EdgeInsets.only(right: 24),
+      trailing: const Padding(
+        padding: EdgeInsets.only(right: 24),
         child: Icon(
           Icons.phone_outlined,
           size: 28,

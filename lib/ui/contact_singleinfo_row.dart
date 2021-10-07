@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class ContactSingleInfoRow extends StatelessWidget {
   const ContactSingleInfoRow(
-      {required this.singleInfo, required this.singleIcon})
-      : super();
+      {Key? key, required this.singleInfo, required this.singleIcon})
+      : super(key: key);
 
   final String singleInfo;
   final IconData singleIcon;
@@ -11,7 +11,7 @@ class ContactSingleInfoRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: EdgeInsets.only(top: 6, left: 24, bottom: 6),
+      contentPadding: const EdgeInsets.only(top: 6, left: 24, bottom: 6),
       leading: Padding(
         padding: const EdgeInsets.only(right: 16),
         child: Icon(
@@ -19,7 +19,7 @@ class ContactSingleInfoRow extends StatelessWidget {
           size: 28,
         ),
       ),
-      title: Text("$singleInfo"),
+      title: Text(singleInfo),
     );
   }
 }

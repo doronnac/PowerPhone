@@ -12,7 +12,7 @@ class FavAvatar extends StatelessWidget {
         child: CircleAvatar(
           backgroundColor: Colors.transparent,
           radius: 48,
-          backgroundImage: NetworkImage(this.link),
+          backgroundImage: NetworkImage(link),
         ));
   }
 }

@@ -1,6 +1,7 @@
 import 'package:avatars/avatars.dart';
-import 'package:better_phone/models/contact.dart';
 import 'package:better_phone/ui/contact_singleinfo_row.dart';
+import 'package:better_phone/utils/parse_contact.dart';
+import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 
 class SingleContactPage extends StatelessWidget {
@@ -23,13 +24,13 @@ class SingleContactPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(children: [
-          Center(child: Avatar(name: '${contact.name} ${contact.surname}')),
+          Center(child: Avatar(name: parseName(contact.displayName))),
           const SizedBox(
             height: 16,
           ),
           Column(children: [
             Text(
-              "${contact.name} ${contact.surname}",
+              contact.displayName ?? '',
               style: Theme.of(context).textTheme.headline1,
             ),
           ]),
@@ -37,19 +38,19 @@ class SingleContactPage extends StatelessWidget {
             height: 28,
           ),
           ContactSingleInfoRow(
-            singleInfo: contact.phone,
+            singleInfo: parsePhone(contact.phones),
             singleIcon: Icons.phone_outlined,
           ),
           ContactSingleInfoRow(
-            singleInfo: contact.email,
+            singleInfo: parseEmail(contact.emails),
             singleIcon: Icons.email_outlined,
           ),
           ContactSingleInfoRow(
-            singleInfo: "${contact.address},\n${contact.city}",
+            singleInfo: parsePostalAddress(contact.postalAddresses),
             singleIcon: Icons.location_on_outlined,
           ),
           ContactSingleInfoRow(
-            singleInfo: "@${contact.username}",
+            singleInfo: parseName(contact.displayName),
             singleIcon: Icons.account_circle_outlined,
           )
         ]),
